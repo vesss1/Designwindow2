@@ -4,9 +4,13 @@
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
-    , m_darkMode(false)
+    , m_darkMode(true)
 {
     ui->setupUi(this);
+    
+    // Set dark mode as default and update toggle state
+    ui->actionDarkMode->setChecked(true);
+    applyDarkStyle();
     
     // Connect dark mode action
     connect(ui->actionDarkMode, &QAction::toggled, this, &MainWindow::toggleDarkMode);
